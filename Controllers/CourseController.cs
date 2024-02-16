@@ -7,7 +7,8 @@ public class CourseController : Controller
 {
     public IActionResult Index()
     {
-        return View();
+        var model = Repository.Applications;
+        return View(model);
     }
 
     public IActionResult Apply()
