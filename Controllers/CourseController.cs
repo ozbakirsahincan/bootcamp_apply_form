@@ -19,6 +19,8 @@ public class CourseController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Apply([FromForm] Candidate model)
     {
-        return View();
+        
+        Repository.Add(model);
+        return Redirect("/");
     }
 }
