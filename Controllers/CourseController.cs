@@ -20,8 +20,17 @@ public class CourseController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Apply([FromForm] Candidate model)
     {
-        
-        Repository.Add(model);
-        return View("feedback",model);
+        if (Repository.Applications.Any(i => i.Email.Equals(model.Email)))
+        {
+            ModelState.AddModelError("", "You have already application. ");
+        }
+
+        if (ModelState.IsValid)
+        {
+            Repository.Add(model);
+            return View("feedback", model);
+        }
+
+        return View();
     }
 }
