@@ -21,6 +21,6 @@ public class CourseController : Controller
     {
         
         Repository.Add(model);
-        return Redirect("/");
+        return View("feedback",model);
     }
 }
